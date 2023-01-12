@@ -203,7 +203,6 @@ require (
 replace (
 	github.com/go-gota/gota => github.com/gojekfarm/gota v0.12.1-0.20220728030132-6dc5095da912
 	github.com/gojek/merlin-pyspark-app => ../python/batch-predictor
-	github.com/gojek/mlp => github.com/gojek/mlp v1.7.5-0.20230112103534-3f1866de350d // TODO: Remove when done with local testing!
 	github.com/googleapis/gnostic => github.com/google/gnostic v0.5.5
 	github.com/prometheus/tsdb => github.com/prometheus/tsdb v0.3.1
 	k8s.io/api => k8s.io/api v0.21.3
