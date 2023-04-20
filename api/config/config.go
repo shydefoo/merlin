@@ -25,9 +25,9 @@ import (
 	"github.com/caraml-dev/merlin/pkg/transformer/feast"
 	"github.com/caraml-dev/merlin/pkg/transformer/spec"
 	internalValidator "github.com/caraml-dev/merlin/pkg/validator"
-	mlpcluster "github.com/gojek/mlp/api/pkg/cluster"
-	"github.com/gojek/mlp/api/pkg/instrumentation/newrelic"
-	"github.com/gojek/mlp/api/pkg/instrumentation/sentry"
+	mlpcluster "github.com/caraml-dev/mlp/api/pkg/cluster"
+	"github.com/caraml-dev/mlp/api/pkg/instrumentation/newrelic"
+	"github.com/caraml-dev/mlp/api/pkg/instrumentation/sentry"
 )
 
 const (
@@ -202,6 +202,7 @@ type ImageBuilderConfig struct {
 	NodeSelectors DictEnv              `envconfig:"IMG_BUILDER_NODE_SELECTORS"`
 	MaximumRetry  int32                `envconfig:"IMG_BUILDER_MAX_RETRY" default:"3"`
 	K8sConfig     mlpcluster.K8sConfig `envconfig:"IMG_BUILDER_K8S_CONFIG"`
+	SafeToEvict   bool                 `envconfig:"IMG_BUILDER_SAFE_TO_EVICT" default:"false"`
 }
 
 type Tolerations []v1.Toleration

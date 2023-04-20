@@ -8,9 +8,9 @@ import (
 	"time"
 
 	"github.com/GoogleCloudPlatform/spark-on-k8s-operator/pkg/client/clientset/versioned"
+	"github.com/caraml-dev/mlp/api/pkg/auth"
 	feast "github.com/feast-dev/feast/sdk/go"
 	"github.com/feast-dev/feast/sdk/go/protos/feast/core"
-	"github.com/gojek/mlp/api/pkg/auth"
 	"github.com/golang-migrate/migrate/v4"
 	"github.com/golang-migrate/migrate/v4/database/postgres"
 	"github.com/jinzhu/gorm"
@@ -32,7 +32,7 @@ import (
 	"github.com/caraml-dev/merlin/queue/work"
 	"github.com/caraml-dev/merlin/service"
 	"github.com/caraml-dev/merlin/storage"
-	mlpcluster "github.com/gojek/mlp/api/pkg/cluster"
+	mlpcluster "github.com/caraml-dev/mlp/api/pkg/cluster"
 )
 
 type deps struct {
@@ -144,6 +144,7 @@ func initImageBuilder(cfg *config.Config) (webserviceBuilder imagebuilder.ImageB
 		Tolerations:          cfg.ImageBuilderConfig.Tolerations,
 		NodeSelectors:        cfg.ImageBuilderConfig.NodeSelectors,
 		MaximumRetry:         cfg.ImageBuilderConfig.MaximumRetry,
+		SafeToEvict:          cfg.ImageBuilderConfig.SafeToEvict,
 
 		ClusterName: cfg.ImageBuilderConfig.ClusterName,
 		GcpProject:  cfg.ImageBuilderConfig.GcpProject,
@@ -164,6 +165,7 @@ func initImageBuilder(cfg *config.Config) (webserviceBuilder imagebuilder.ImageB
 		Tolerations:          cfg.ImageBuilderConfig.Tolerations,
 		NodeSelectors:        cfg.ImageBuilderConfig.NodeSelectors,
 		MaximumRetry:         cfg.ImageBuilderConfig.MaximumRetry,
+		SafeToEvict:          cfg.ImageBuilderConfig.SafeToEvict,
 
 		ClusterName: cfg.ImageBuilderConfig.ClusterName,
 		GcpProject:  cfg.ImageBuilderConfig.GcpProject,
